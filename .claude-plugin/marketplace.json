@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "jamleekim-dual-code-review",
+  "description": "Opus와 Codex 두 AI가 독립적으로 코드를 리뷰하고 토론하는 Claude Code 플러그인 마켓플레이스",
+  "owner": {
+    "name": "jamleekim"
+  },
+  "plugins": [
+    {
+      "name": "dual-code-review",
+      "description": "Two-AI dual code review system with Opus and Codex",
+      "category": "development",
+      "source": "./plugins/dual-code-review"
+    }
+  ]
+}
