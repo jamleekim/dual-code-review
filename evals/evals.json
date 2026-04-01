@@ -1,0 +1,53 @@
+{
+  "skill_name": "dual-code-review",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "/dual-review",
+      "expected_output": "Opus와 Codex가 각각 독립 리뷰를 수행하고, 비교 분석 후 .reviews/ 디렉토리에 PR 스타일 마크다운 리포트를 생성. 변경 제안은 사용자 승인 대기.",
+      "files": [],
+      "assertions": [
+        {"id": "report_file_exists", "text": "리포트 마크다운 파일이 생성되었는가"},
+        {"id": "has_dual_reviews", "text": "Opus와 Codex 두 개의 독립 리뷰가 리포트에 포함되어 있는가"},
+        {"id": "has_agreed_section", "text": "두 리뷰어가 합의한 사항(Agreed) 섹션이 존재하는가"},
+        {"id": "has_comparison", "text": "Opus Only / Codex Only / Disputed 등 비교 분석이 있는가"},
+        {"id": "has_verdict", "text": "APPROVE/REQUEST_CHANGES/COMMENT 최종 판정이 있는가"},
+        {"id": "has_file_references", "text": "구체적 파일 경로와 라인 번호를 참조하는가"},
+        {"id": "has_severity_labels", "text": "Critical/High/Medium/Low 심각도 분류가 있는가"},
+        {"id": "reviews_all_changes", "text": "작업 트리의 주요 변경 파일들이 리뷰 범위에 포함되었는가"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "/dual-review ai-service/src/claude_client.py",
+      "expected_output": "지정된 단일 파일만 리뷰 대상으로 삼아 Opus/Codex 독립 리뷰 수행. 해당 파일에 대한 집중 분석 리포트 생성.",
+      "files": ["ai-service/src/claude_client.py"],
+      "assertions": [
+        {"id": "report_file_exists", "text": "리포트 마크다운 파일이 생성되었는가"},
+        {"id": "has_dual_reviews", "text": "Opus와 Codex 두 개의 독립 리뷰가 리포트에 포함되어 있는가"},
+        {"id": "has_agreed_section", "text": "두 리뷰어가 합의한 사항(Agreed) 섹션이 존재하는가"},
+        {"id": "has_comparison", "text": "Opus Only / Codex Only / Disputed 등 비교 분석이 있는가"},
+        {"id": "has_verdict", "text": "APPROVE/REQUEST_CHANGES/COMMENT 최종 판정이 있는가"},
+        {"id": "has_file_references", "text": "구체적 파일 경로와 라인 번호를 참조하는가"},
+        {"id": "has_severity_labels", "text": "Critical/High/Medium/Low 심각도 분류가 있는가"},
+        {"id": "correct_scope", "text": "claude_client.py 파일에만 집중한 리뷰인가"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "/dual-review --base HEAD~3",
+      "expected_output": "최근 3개 커밋의 변경사항을 범위로 설정하여 리뷰 수행. 커밋 범위에 포함된 모든 변경 파일에 대한 리포트 생성.",
+      "files": [],
+      "assertions": [
+        {"id": "report_file_exists", "text": "리포트 마크다운 파일이 생성되었는가"},
+        {"id": "has_dual_reviews", "text": "Opus와 Codex 두 개의 독립 리뷰가 리포트에 포함되어 있는가"},
+        {"id": "has_agreed_section", "text": "두 리뷰어가 합의한 사항(Agreed) 섹션이 존재하는가"},
+        {"id": "has_comparison", "text": "Opus Only / Codex Only / Disputed 등 비교 분석이 있는가"},
+        {"id": "has_verdict", "text": "APPROVE/REQUEST_CHANGES/COMMENT 최종 판정이 있는가"},
+        {"id": "has_file_references", "text": "구체적 파일 경로와 라인 번호를 참조하는가"},
+        {"id": "has_severity_labels", "text": "Critical/High/Medium/Low 심각도 분류가 있는가"},
+        {"id": "correct_scope", "text": "HEAD~3 이후의 커밋 변경사항만 리뷰 범위로 삼았는가"}
+      ]
+    }
+  ]
+}

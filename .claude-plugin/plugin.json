@@ -1,0 +1,8 @@
+{
+  "name": "dual-code-review",
+  "version": "1.0.0",
+  "description": "Opus와 Codex 두 AI가 독립적으로 코드를 리뷰하고 토론하는 듀얼 코드 리뷰 시스템",
+  "author": {
+    "name": "jaemim.kim"
+  }
+}
