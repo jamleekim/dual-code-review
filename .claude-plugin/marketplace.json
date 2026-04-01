@@ -10,7 +10,7 @@
       "name": "dual-code-review",
       "description": "Two-AI dual code review system with Opus and Codex",
       "category": "development",
-      "source": "./plugins/dual-code-review"
+      "source": "."
     }
   ]
 }
